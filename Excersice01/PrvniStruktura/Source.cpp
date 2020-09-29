@@ -1,5 +1,6 @@
 #include <iostream>
 
+//Ukol 2+3
 struct Trojuhelnik {
 	int a, b, c;  
 };

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Trojuhelnik.h"
 
+//Ukol 4+5
 int main(int argc, char** argv) {
 	int count;
 	std::cout << "Zadejte pocet trojuhelniku: ";
