@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CashRegister.cpp" />
+    <ClCompile Include="Reciept.cpp" />
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CashRegister.h" />
+    <ClInclude Include="Reciept.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{CF02F9C0-0078-4524-AFBD-6EE5C9017765}</ProjectGuid>
@@ -137,15 +146,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Excersice02\Cv02\CashRegister.h" />
-    <ClInclude Include="..\..\Excersice02\Cv02\Reciept.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Excersice02\Cv02\CashRegister.cpp" />
-    <ClCompile Include="..\..\Excersice02\Cv02\Reciept.cpp" />
-    <ClCompile Include="..\..\Excersice02\Cv02\Source.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
