@@ -15,12 +15,11 @@ CashRegister::CashRegister()
 }
 
 CashRegister::~CashRegister() {
-	for (size_t i = 0; i < recieptCounter; i++)
+	for (size_t i = 0; i < 10; i++)
 	{
 		delete reciepts[i];
 	}
-	recieptCounter = 0;
-	delete reciepts;
+	delete[] reciepts;
 }
 
 Reciept& CashRegister::CreateReciept(double amount, double VAT)
