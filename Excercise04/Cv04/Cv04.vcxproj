@@ -23,6 +23,7 @@
     <ProjectGuid>{D9FF5B07-862C-4E06-884B-1F5FC367861C}</ProjectGuid>
     <RootNamespace>Cv04</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Excercise04</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -138,10 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="DateTime.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="DateTime.h" />
     <ClInclude Include="IComparable.h" />
     <ClInclude Include="IObject.h" />
     <ClInclude Include="Time.h" />

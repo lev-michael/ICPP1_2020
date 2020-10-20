@@ -8,7 +8,7 @@ struct Time : public IComparable {
 public:
 	Time();
 	Time(int hour, int minute, int second);
-	void SeraditPole(IComparable** pole, int velikostPole);
+	void SortArray(IComparable** array, int length);
 	int compareTo(IComparable* obj) const override;
 	std::string toString() const override;
 
