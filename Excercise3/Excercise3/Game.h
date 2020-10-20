@@ -12,7 +12,7 @@ class Game {
 	int counter;
 	int capacity;
 public:
-	Game(int kapacita);
+	Game(int capacity);
 	~Game();
 	void insertObject(Object* o);
 	int* findIdOfStaticObjects(double xmin, double xmax, double ymin, double ymax);

@@ -4,12 +4,12 @@
 #include <iostream>
 
 
-Game::Game(int kapacita)
+Game::Game(int capacity)
 {
-	this->capacity = kapacita;
-	this->objects = new Object * [kapacita];
-	for (int i = 0; i < kapacita; i++)
-		objects[i] = new Object(i);
+	this->capacity = capacity;
+	this->objects = new Object * [capacity];
+	for (int i = 0; i < capacity; i++)
+		objects[i] = nullptr;
 	this->counter = 0;
 }
 
@@ -24,8 +24,11 @@ Game::~Game()
 
 void Game::insertObject(Object* o)
 {
+	if (o == nullptr) {
+		throw std::exception("null object");
+	}
 	if (counter >= capacity) {
-		throw new std::exception("array is full");
+		throw std::exception("array is full");
 	}
 	objects[counter++] = o;
 }
