@@ -138,11 +138,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="PhoneBook.h" />
-    <ClInclude Include="Osoba.h" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PhoneBook.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Osoba.cpp" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="PhoneBook.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

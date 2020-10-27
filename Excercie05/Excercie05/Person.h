@@ -3,15 +3,17 @@
 #define OSOBA_H
 #include <string>
 
+
 class Person {
-private:
+public:
+	Person(int id, std::string firstName, std::string phone);
+	~Person();
 	int id;
 	std::string firstName;
 	std::string phone;
-
-public: 
-	Person(int id, std::string firstName, std::string phone);
+	void toString() const;
 };
 
 #endif // !OSOBA_H
+
 
