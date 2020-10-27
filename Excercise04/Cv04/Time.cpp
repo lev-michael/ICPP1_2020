@@ -15,25 +15,33 @@ Time::Time(int hour, int minute, int second)
 		this->_hours = hour;
 	}
 	else {
-		this->_hours = 0;
+		throw new std::exception("Invalid time");
 	}
 	if (minute < 60 && minute >= 0) {
 		this->_minutes = minute;
 	}
 	else {
-		this->_minutes = 0;
+		throw new std::exception("Invalid time");
 	}
 	if (second < 60 && second >= 0) {
 		this->_seconds = second;
 	}
 	else {
-		this->_seconds = 0;
+		throw new std::exception("Invalid time");
 	}
 }
+
+Time::~Time()
+{
+}
+
 
 int Time::compareTo(IComparable* obj) const
 {
 	Time* time = static_cast<Time*>(obj);
+	if (time == nullptr) {
+		throw new std::exception("Null object");
+	}
 	if (this->_hours == time->_hours && this->_minutes == time->_minutes && this->_seconds == time->_seconds)
 		return 0;
 

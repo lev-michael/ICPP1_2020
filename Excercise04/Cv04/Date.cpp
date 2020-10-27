@@ -15,25 +15,28 @@ Date::Date(int day, int month, int year)
 		this->_month = month;
 	}
 	else {
-		this->_month = 1;
-	}
-	if (year <= 2100 && year > 1900) {
-		this->_year = year;
-	}
-	else {
-		this->_year = 2020;
+		throw new std::exception("Invalid date");
 	}
 	if (checkDay(day,month)) {
 		this->_day = day;
 	}
 	else {
-		this->_day = 1;
+		throw new std::exception("Invalid time");
 	}
+	this->_year = year;
 }
+
+Date::~Date()
+{
+}
+
 
 int Date::compareTo(IComparable* obj) const 
 {
 	Date* date = static_cast<Date*>(obj);
+	if (date==nullptr) {
+		throw new std::exception("Null object");
+	}
 	if (this->_year == date->_year && this->_month == date->_month && this->_day == date->_day)
 		return 0;
 

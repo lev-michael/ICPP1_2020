@@ -21,6 +21,10 @@ DateTime::~DateTime()
 int DateTime::compareTo(IComparable* obj) const
 {	
 	DateTime* dateTime = static_cast<DateTime*>(obj);
+	if(dateTime == nullptr) {
+		throw new std::exception("Null object");
+
+	}
 	int date = this->_date.compareTo((Date*) &dateTime->_date);
 	int time = this->_time.compareTo((Time*) &dateTime->_time);
 	if (date == 1 || (date == 0 && time == 1)) {

@@ -5,7 +5,9 @@
 
 
 class IComparable: IObject {
+public:
 	virtual int compareTo(IComparable* obj) const = 0;
+	virtual ~IComparable() {};
 
 };
 
