@@ -4,11 +4,10 @@
 #include "IObject.h"
 
 
-class IComparable: IObject {
+class IComparable: public IObject {
 public:
 	virtual int compareTo(IComparable* obj) const = 0;
 	virtual ~IComparable() {};
-
 };
 
 #endif 

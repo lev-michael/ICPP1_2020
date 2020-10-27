@@ -9,7 +9,6 @@ public:
 	Time();
 	Time(int hour, int minute, int second);
 	~Time();
-	void SortArray(IComparable** array, int length);
 	int compareTo(IComparable* obj) const override;
 	std::string toString() const override;
 

@@ -20,10 +20,12 @@ DateTime::~DateTime()
 
 int DateTime::compareTo(IComparable* obj) const
 {	
+	if (obj == nullptr) {
+		throw new std::exception("Null object");
+	}
 	DateTime* dateTime = static_cast<DateTime*>(obj);
 	if(dateTime == nullptr) {
 		throw new std::exception("Null object");
-
 	}
 	int date = this->_date.compareTo((Date*) &dateTime->_date);
 	int time = this->_time.compareTo((Time*) &dateTime->_time);
@@ -35,21 +37,6 @@ int DateTime::compareTo(IComparable* obj) const
 	}
 	
 	return -1;
-}
-
-void DateTime::SortArray(IComparable** array, int length) const
-{
-	DateTime** dateTimes = (DateTime**)array;
-	DateTime* temp;
-	for (size_t i = 0; i < length; i++) {
-		for (size_t j = 0; j < length - i - 1; j++) {
-			if (dateTimes[j]->compareTo(dateTimes[j + 1]) == 1) {
-				temp = dateTimes[j];
-				dateTimes[j] = dateTimes[j + 1];
-				dateTimes[j + 1] = temp;
-			}
-		}
-	}
 }
 
 std::string DateTime::toString() const

@@ -11,19 +11,13 @@ Date::Date()
 
 Date::Date(int day, int month, int year)
 {
-	if (month <= 12 && month > 0) {
-		this->_month = month;
-	}
-	else {
+	if (month > 12 || month <= 0 || !checkDay(day, month)) {
 		throw new std::exception("Invalid date");
+
 	}
-	if (checkDay(day,month)) {
-		this->_day = day;
-	}
-	else {
-		throw new std::exception("Invalid time");
-	}
-	this->_year = year;
+	_month = month;
+	_day = day;
+	_year = year;
 }
 
 Date::~Date()
@@ -33,6 +27,9 @@ Date::~Date()
 
 int Date::compareTo(IComparable* obj) const 
 {
+	if (obj == nullptr) {
+		throw new std::exception("Null object");
+	}
 	Date* date = static_cast<Date*>(obj);
 	if (date==nullptr) {
 		throw new std::exception("Null object");
@@ -82,18 +79,3 @@ bool Date::checkDay(int d, int m) const {
 	return true;
 }
 
-void Date::SortArray(IComparable** array, int length) const
-{
-	Date** dates = (Date**)array;
-	Date* temp;
-	for (size_t i = 0; i < length; i++) {
-		for (size_t j = 0; j < length - i - 1; j++) {
-			if (dates[j]->compareTo(dates[j + 1]) == 1) {
-				temp = dates[j];
-				dates[j] = dates[j + 1];
-				dates[j + 1] = temp;
-			}
-		}
-	}
-	array = (IComparable**)dates;
-}

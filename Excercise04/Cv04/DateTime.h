@@ -14,7 +14,6 @@ public:
 	DateTime(Date* date, Time* time);
 	~DateTime();
 	int compareTo(IComparable* obj) const override;
-	void SortArray(IComparable** array, int length) const;
 	std::string toString() const override;
 };
 #endif // DATE_TIME_H

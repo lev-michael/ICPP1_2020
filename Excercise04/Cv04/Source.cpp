@@ -5,6 +5,20 @@
 #define LENGTH 10
 using namespace std;
 
+void SortArray(IComparable** array, int length)
+{
+	IComparable* temp;
+	for (size_t i = 0; i < length; i++) {
+		for (size_t j = 0; j < length - i - 1; j++) {
+			if (array[j]->compareTo(array[j + 1]) == 1) {
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+}
+
 int main(int argv, char** argc) {	
 	Time** times = new Time*[LENGTH];
 	Date** dates = new Date * [LENGTH];
@@ -15,9 +29,9 @@ int main(int argv, char** argc) {
 		dates[i] = new Date(rand() % 30 + 1, rand() % 12 + 1, rand() % 200 + 1900);
 		dateTimes[i] = new DateTime(dates[i], times[i]);
 	}
-	times[0]->SortArray((IComparable**) times, LENGTH);
-	dates[0]->SortArray((IComparable**)dates, LENGTH);
-	dateTimes[0]->SortArray((IComparable**)dateTimes, LENGTH);
+	SortArray((IComparable**) times, LENGTH);
+	SortArray((IComparable**)dates, LENGTH);
+	SortArray((IComparable**)dateTimes, LENGTH);
 
 	cout << "Sorted time" << endl;
 	for (size_t i = 0; i < LENGTH; i++)
@@ -45,3 +59,4 @@ int main(int argv, char** argc) {
 	
 	return 0;
 }
+

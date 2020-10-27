@@ -11,24 +11,12 @@ Time::Time()
 
 Time::Time(int hour, int minute, int second)
 {
-	if (hour < 24 && hour >= 0) {
-		this->_hours = hour;
-	}
-	else {
+	if (hour > 23 | hour < 0 || minute > 59 || minute < 0 || second >59 || second<0) {
 		throw new std::exception("Invalid time");
 	}
-	if (minute < 60 && minute >= 0) {
-		this->_minutes = minute;
-	}
-	else {
-		throw new std::exception("Invalid time");
-	}
-	if (second < 60 && second >= 0) {
-		this->_seconds = second;
-	}
-	else {
-		throw new std::exception("Invalid time");
-	}
+	_hours = hour;
+	_minutes = minute;
+	_seconds = second;
 }
 
 Time::~Time()
@@ -38,6 +26,10 @@ Time::~Time()
 
 int Time::compareTo(IComparable* obj) const
 {
+	if (obj == nullptr) {
+		throw new std::exception("Null object");
+	}
+
 	Time* time = static_cast<Time*>(obj);
 	if (time == nullptr) {
 		throw new std::exception("Null object");
@@ -45,28 +37,13 @@ int Time::compareTo(IComparable* obj) const
 	if (this->_hours == time->_hours && this->_minutes == time->_minutes && this->_seconds == time->_seconds)
 		return 0;
 
-	if (this->_hours > time->_hours || (this->_hours >= time->_hours && this->_minutes > time->_minutes) ||
-		(this->_hours >= time->_hours && this->_minutes >= time->_minutes && this->_seconds > time->_seconds))
+	if (this->_hours > time->_hours || (this->_hours == time->_hours && this->_minutes > time->_minutes) ||
+		(this->_hours == time->_hours && this->_minutes == time->_minutes && this->_seconds > time->_seconds))
 		return 1;
 
 	return -1;
 }
 
-void Time::SortArray(IComparable** array, int length)
-{
-	Time** times =(Time**) array;
-	Time* temp;
-	for (size_t i = 0; i < length; i++){
-		for (size_t j = 0; j < length-i-1; j++){
-			if (times[j]->compareTo(times[j+1])== 1) {
-				temp = times[j];
-				times[j] = times[j + 1];
-				times[j + 1] = temp;
-			}
-		}
-	}
-	array = (IComparable**) times;
-}
 
 std::string Time::toString() const
 {

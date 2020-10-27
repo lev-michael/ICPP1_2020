@@ -11,7 +11,6 @@ public:
 	int compareTo(IComparable* obj) const override;
 	std::string toString() const override;
 	bool checkDay(int d, int m) const ;
-	void SortArray(IComparable** array, int length) const;
 private:
 	int _day;
 	int _month;
