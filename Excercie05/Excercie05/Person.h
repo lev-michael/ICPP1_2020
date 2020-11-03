@@ -5,13 +5,15 @@
 
 namespace Entity {
 	class Person {
-	public:
-		Person(int id, std::string firstName, std::string phone);
-		~Person();
 		int id;
 		std::string firstName;
 		std::string phone;
+	public:
+		Person(int id, std::string firstName, std::string phone);
+		~Person();
 		void toString() const;
+		std::string GetFirstName();
+		int GetId();
 	};
 }
 

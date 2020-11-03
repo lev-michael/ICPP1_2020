@@ -4,11 +4,14 @@
 #include "Person.h"
 
 class Node {
-public:
 	Node* next;
 	Entity::Person* person;
+public:
 	Node(Entity::Person* person);
 	~Node();
+	Node* GetNext();
+	void SetNext(Node* node);
+	Entity::Person* GetPerson();
 };
 
 

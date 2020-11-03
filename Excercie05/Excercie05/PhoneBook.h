@@ -7,14 +7,14 @@
 
 namespace Model{
 	class PhoneBook {
-	public:
 		Node* first;
+	public:
 		PhoneBook();
 		~PhoneBook();
-
 		void push(Node* newNode);
 		Node* findById(int id);
 		Node* findByName(std::string name);
+		Node* GetFirst();
 	};
 }
 

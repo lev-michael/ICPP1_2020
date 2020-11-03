@@ -7,7 +7,19 @@ Node::Node(Entity::Person* person)
 }
 
 Node::~Node()
+{}
+
+Node* Node::GetNext()
 {
-	delete person;
-	delete next;
+	return next;
+}
+
+void Node::SetNext(Node* node)
+{
+	this->next = node;
+}
+
+Entity::Person* Node::GetPerson()
+{
+	return person;
 }

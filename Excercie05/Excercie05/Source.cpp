@@ -22,15 +22,15 @@ int main(int argc, char* argv[]) {
 		n = new Node(p);
 		phoneBook->push(n);
 	}
-	n = phoneBook->first;
+	n = phoneBook->GetFirst();
 	while (n != NULL) {
-		n->person->toString();
-		n = n->next;
+		n->GetPerson()->toString();
+		n = n->GetNext();
 	}
 
 	n = phoneBook->findById(50);
-	n->person->toString();
+	n->GetPerson()->toString();
 	n = phoneBook->findByName("Person77");
-	n->person->toString();
+	n->GetPerson()->toString();
 
 }

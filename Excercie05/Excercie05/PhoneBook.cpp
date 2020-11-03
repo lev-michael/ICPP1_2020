@@ -1,11 +1,10 @@
 #include "Node.h"
 #include "Person.h"
 #include "PhoneBook.h"
+#include <stdexcept>
 
 Model::PhoneBook::PhoneBook()
-{
-    this->first = nullptr;
-}
+{}
 
 
 
@@ -13,7 +12,7 @@ Model::PhoneBook::~PhoneBook()
 {
     Node* temp = NULL;
     while (first != NULL) {
-        temp = first->next;
+        temp = first->GetNext();
         delete first;
         first = temp;
     }
@@ -21,7 +20,7 @@ Model::PhoneBook::~PhoneBook()
 
 void Model::PhoneBook::push(Node* newNode)
 {
-    newNode->next = this->first;
+    newNode->SetNext(this->first);
     this->first = newNode;
 }
 
@@ -29,33 +28,38 @@ void Model::PhoneBook::push(Node* newNode)
 Node* Model::PhoneBook::findById(int id)
 {
     if (id < 1) {
-        throw new std::exception("Invalid ID");
+        throw std::invalid_argument("Invalid ID");
     }
 
     Node* temp = this->first;
     while (temp != nullptr) {
-        if (temp->person->id == id) {
+        if (temp->GetPerson()->GetId() == id) {
             return temp;
         }
-        temp = temp->next;
+        temp = temp->GetNext();
     }
-    throw new std::exception("No person found");
+    throw std::exception("No person found");
 }
 
 Node* Model::PhoneBook::findByName(std::string name)
 {
 
     if (name.empty()) {
-        throw new std::exception("Invalid name");
+        throw std::invalid_argument("Invalid name");
     }
 
     Node* temp = this->first;
     while (temp != nullptr) {
-        if (temp->person->firstName == name) {
+        if (temp->GetPerson()->GetFirstName() == name) {
             return temp;
         }
-        temp = temp->next;
+        temp = temp->GetNext();
     }
-    throw new std::exception("No person found");
+    throw std::invalid_argument("No person found");
+}
+
+Node* Model::PhoneBook::GetFirst()
+{
+    return first;
 }
 
