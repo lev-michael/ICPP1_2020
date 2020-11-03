@@ -38,7 +38,7 @@ Node* Model::PhoneBook::findById(int id)
         }
         temp = temp->GetNext();
     }
-    throw std::exception("No person found");
+    throw std::invalid_argument("No person found");
 }
 
 Node* Model::PhoneBook::findByName(std::string name)
