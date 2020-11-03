@@ -1,12 +1,12 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
+#include <stdexcept>
 
 template<typename DataType, int startValue, int risingCoefficient = 2>
 class IncreasingContainer {
 	DataType* _array;
 	unsigned _length;
 	unsigned _counterValidElemnt;
-
 public:
 	IncreasingContainer();
 	~IncreasingContainer();
@@ -44,10 +44,10 @@ template<typename DataType, int startValue, int risingCoefficient>
 inline void IncreasingContainer<DataType, startValue, risingCoefficient>::increaseArray()
 {
 	_length = _length * risingCoefficient;
-	DataType newArray = new DataType[_length];
+	DataType* newArray = new DataType[_length];
 	for (size_t i = 0; i < _counterValidElemnt; i++)
 	{
-		newArray[i] = this->_array[i];
+		newArray[i] = _array[i];
 	}
 	delete [] _array;
 	_array = newArray;
@@ -69,9 +69,9 @@ template<typename DataType, int startValue, int risingCoefficient>
 inline DataType& IncreasingContainer<DataType, startValue, risingCoefficient>::operator[](int index)
 {
 	if (index < 0 || index > this->_counterValidElemnt) {
-		throw new std::exception("Invalid index");
+		throw std::invalid_argument("Invalid index");
 	}
-	return array[index];
+	return _array[index];
 
 }
 
@@ -79,9 +79,9 @@ template<typename DataType, int startValue, int risingCoefficient>
 inline DataType IncreasingContainer<DataType, startValue, risingCoefficient>::operator[](int index) const
 {
 	if (index < 0 || index > this->_counterValidElemnt) {
-		throw new std::exception("Invalid index");
+		throw std::invalid_argument("Invalid index");
 	}
-	return array[index];
+	return _array[index];
 }
 
 template<typename DataType, int startValue, int risingCoefficient>

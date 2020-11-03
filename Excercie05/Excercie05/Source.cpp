@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 		phoneBook->push(n);
 	}
 	n = phoneBook->GetFirst();
-	while (n != NULL) {
+	while (n != nullptr) {
 		n->GetPerson()->toString();
 		n = n->GetNext();
 	}

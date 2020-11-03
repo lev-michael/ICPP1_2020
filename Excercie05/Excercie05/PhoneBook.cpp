@@ -4,14 +4,16 @@
 #include <stdexcept>
 
 Model::PhoneBook::PhoneBook()
-{}
+{
+    this->first = nullptr;
+}
 
 
 
 Model::PhoneBook::~PhoneBook()
 {
-    Node* temp = NULL;
-    while (first != NULL) {
+    Node* temp = nullptr;
+    while (first != nullptr) {
         temp = first->GetNext();
         delete first;
         first = temp;
