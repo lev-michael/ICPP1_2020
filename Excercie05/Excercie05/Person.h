@@ -12,8 +12,8 @@ namespace Entity {
 		Person(int id, std::string firstName, std::string phone);
 		~Person();
 		void toString() const;
-		std::string GetFirstName();
-		int GetId();
+		std::string GetFirstName() const;
+		int GetId() const;
 	};
 }
 

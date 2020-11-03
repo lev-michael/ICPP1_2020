@@ -1,7 +1,7 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 
-template<typename DataType, int startValue, int risingCoefficient>
+template<typename DataType, int startValue, int risingCoefficient = 2>
 class IncreasingContainer {
 	DataType* _array;
 	unsigned _length;
@@ -31,7 +31,7 @@ inline IncreasingContainer<DataType, startValue, risingCoefficient>::IncreasingC
 template<typename DataType, int startValue, int risingCoefficient>
 inline IncreasingContainer<DataType, startValue, risingCoefficient>::~IncreasingContainer()
 {
-	delete _array;
+	delete [] _array;
 }
 
 template<typename DataType, int startValue, int risingCoefficient>
@@ -43,7 +43,14 @@ inline bool IncreasingContainer<DataType, startValue, risingCoefficient>::isArra
 template<typename DataType, int startValue, int risingCoefficient>
 inline void IncreasingContainer<DataType, startValue, risingCoefficient>::increaseArray()
 {
-
+	_length = _length * risingCoefficient;
+	DataType newArray = new DataType[_length];
+	for (size_t i = 0; i < _counterValidElemnt; i++)
+	{
+		newArray[i] = this->_array[i];
+	}
+	delete [] _array;
+	_array = newArray;
 }
 
 template<typename DataType, int startValue, int risingCoefficient>

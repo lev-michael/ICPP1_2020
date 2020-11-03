@@ -17,12 +17,12 @@ void Entity::Person::toString() const
 	std::cout << "id: " + std::to_string(id) + ", name: " + firstName + ", phone: " + phone << std::endl;
 }
 
-std::string Entity::Person::GetFirstName()
+std::string Entity::Person::GetFirstName() const
 {
 	return this->firstName;
 }
 
-int Entity::Person::GetId()
+int Entity::Person::GetId() const
 {
 	return id;
 }
