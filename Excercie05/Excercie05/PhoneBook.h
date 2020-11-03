@@ -5,17 +5,20 @@
 #include "Person.h"
 #include "Node.h"
 
+namespace Model{
+	class PhoneBook {
+	public:
+		Node* first;
+		PhoneBook();
+		~PhoneBook();
 
-class PhoneBook {
-public:
-	Node* first;
-	PhoneBook();
-	~PhoneBook();
+		void push(Node* newNode);
+		Node* findById(int id);
+		Node* findByName(std::string name);
+	};
+}
 
-	void push(Node* newNode);
-	Node* findById(int id);
-	Node* findByName(std::string name);
-};
+
 
 
 

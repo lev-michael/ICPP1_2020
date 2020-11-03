@@ -5,6 +5,8 @@
 #include <time.h>       
 
 using namespace std;
+using namespace Entity;
+using namespace Model;
 
 int main(int argc, char* argv[]) {
 	Person* p;

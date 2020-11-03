@@ -1,6 +1,6 @@
 #include "Node.h"
 
-Node::Node(Person* person)
+Node::Node(Entity::Person* person)
 {
 	this->next = nullptr;
 	this->person = person;

@@ -2,14 +2,14 @@
 #include "Person.h"
 #include "PhoneBook.h"
 
-PhoneBook::PhoneBook()
+Model::PhoneBook::PhoneBook()
 {
     this->first = nullptr;
 }
 
 
 
-PhoneBook::~PhoneBook()
+Model::PhoneBook::~PhoneBook()
 {
     Node* temp = NULL;
     while (first != NULL) {
@@ -19,14 +19,14 @@ PhoneBook::~PhoneBook()
     }
 }
 
-void PhoneBook::push(Node* newNode)
+void Model::PhoneBook::push(Node* newNode)
 {
     newNode->next = this->first;
     this->first = newNode;
 }
 
 
-Node* PhoneBook::findById(int id)
+Node* Model::PhoneBook::findById(int id)
 {
     if (id < 1) {
         throw new std::exception("Invalid ID");
@@ -42,7 +42,7 @@ Node* PhoneBook::findById(int id)
     throw new std::exception("No person found");
 }
 
-Node* PhoneBook::findByName(std::string name)
+Node* Model::PhoneBook::findByName(std::string name)
 {
 
     if (name.empty()) {

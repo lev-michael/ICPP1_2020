@@ -6,8 +6,8 @@
 class Node {
 public:
 	Node* next;
-	Person* person;
-	Node(Person* person);
+	Entity::Person* person;
+	Node(Entity::Person* person);
 	~Node();
 };
 
