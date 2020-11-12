@@ -10,7 +10,9 @@ int main(int argc, char** argv) {
 		std::cout <<"pocet: "<< container.count() << std::endl;
 		std::cout <<"je misto: " << container.isArrayNotFull() << std::endl;
 	}
-	
+
+	std::cout << "prvek: " << container.operator[](1) << std::endl;
+
 
 
 	return 0;

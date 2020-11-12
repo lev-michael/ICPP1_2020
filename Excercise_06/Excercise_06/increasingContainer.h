@@ -72,7 +72,6 @@ inline DataType& IncreasingContainer<DataType, startValue, risingCoefficient>::o
 		throw std::invalid_argument("Invalid index");
 	}
 	return _array[index];
-
 }
 
 template<typename DataType, int startValue, int risingCoefficient>
