@@ -106,9 +106,9 @@ Person* nacti() {
 
 
 int main(int argc, char** argv) {
-	//uloz();
-	//Person* p = nacti();
-
+	uloz();
+	Person* p = nacti();
+	cout << "binarni soubor" << endl;
 	ulozBin();
 	nactiBin();
 	return 0;
