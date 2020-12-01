@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Person* nactiBin() {
+Person* loadBin() {
 	int i = 0;
 	int size = 0;
 	Person p;
@@ -23,13 +23,13 @@ Person* nactiBin() {
 			persons[i] = p;
 			cout << p << endl;
 		}
+		in.close();
 		return persons;
 	}
-	in.close();
 	return nullptr;
 }
 
-void ulozBin() {
+void saveBin() {
 	Person array[5];
 
 	for (size_t i = 0; i < 5; i++)
@@ -109,8 +109,8 @@ int main(int argc, char** argv) {
 	uloz();
 	Person* p = nacti();
 	cout << "binarni soubor" << endl;
-	ulozBin();
-	nactiBin();
+	saveBin();
+	loadBin();
 	return 0;
 }
 
