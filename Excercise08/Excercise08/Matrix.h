@@ -18,7 +18,7 @@ public:
 	Matrix(const Matrix<T>& m);
 	~Matrix();
 	void SetValue(int col, int row, T value);
-	void SetFromArray(T* arr);
+	void SetFromArray(T* arr, int size);
 	T& GetValue(int col, int row);
 	const T& GetValue(int col, int row) const;
 	Matrix<T> Transpose() const;
@@ -85,8 +85,11 @@ template<typename T>
 }
 
 template<typename T>
- void Matrix<T>::SetFromArray(T* arr)
+ void Matrix<T>::SetFromArray(T* arr, int size)
 {
+	 if (size != rows * columns) {
+		 throw length_error("Array size have to be same as Matrix size");
+	 }
 	int arraySize = 0;
 	for (size_t i = 0; i < rows; i++)
 	{
@@ -101,7 +104,7 @@ template<typename T>
 T& Matrix<T>::GetValue(int col, int row)
 {
 	if (col < 0 || col > columns || row<0 || row>rows) {
-		throw invalid_argument("Invalid size of matrix");
+		throw out_of_range("Parameters out of range Matrix");
 	}
 	return matrix[row][col];
 }
@@ -110,7 +113,7 @@ template<typename T>
 const T& Matrix<T>::GetValue(int col, int row) const
 {
 	if (col < 0 || col > columns || row<0 || row>rows) {
-		throw invalid_argument("Invalid size of matrix");
+		throw out_of_range("Parameters out of range Matrix");
 	}
 	return matrix[row][col];
 }
@@ -170,7 +173,7 @@ template<typename T>
 Matrix<T> Matrix<T>::Sum(const Matrix& m) const
 {
 	if (columns != m.columns || rows != m.rows) {
-		throw invalid_argument("Rows and columns must be equal");
+		throw invalid_argument("Cannot sum. Rows and columns must be equal");
 	}
 	Matrix<T> sum{ rows, columns };
 	for (size_t i = 0; i < rows; i++)
