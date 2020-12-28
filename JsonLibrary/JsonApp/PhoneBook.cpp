@@ -41,12 +41,11 @@ void PhoneBook::add(Person* person)
     contacts->append(person);
 }
 
-void PhoneBook::remove(string id)
+Person* PhoneBook::remove(string id)
 {
     int i = findIndex(id);
     if (i != -1) {
-        this->contacts->remove(i);
-        return;
+        return this->contacts->remove(i);
     }
     throw invalid_argument("No person found");
 }

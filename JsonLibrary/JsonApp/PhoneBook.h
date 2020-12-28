@@ -14,7 +14,7 @@
 		PhoneBook();
 		~PhoneBook();
 		void add(Person* person);
-		void remove(std::string id);
+		Person* remove(std::string id);
 		Person* find(std::string id);
 		void save(std::string file) const;
 		void toString() const;

@@ -7,7 +7,6 @@ App::App()
 {
     this->book = new PhoneBook();
     this->stillContinue = true;
-
 }
 
 App::~App()
@@ -16,6 +15,7 @@ App::~App()
 }
 
 void App::writeMenu() const{
+    printDelimeter();
     cout << endl << "Menu" << endl << "Press 1 : Show all persons in PhoneBook" << endl
         << "Press 2 : Add new person to PhoneBook" << endl
         << "Press 3 : Find person by ID" << endl
@@ -23,6 +23,8 @@ void App::writeMenu() const{
         << "Press 5 : Delete person from PhoneBook" << endl
         << "Press 6 : Export data of PhoneBook to the file" << endl
         << "Press 0 : Exit app" << endl;
+    printDelimeter();
+
 }
 
 bool App::is_number(const std::string& s) const
@@ -81,13 +83,13 @@ int App::getEditNumberInput(string text) const
 void App::listAll() const
 {
     if (this->book->isEmpty()) {
+        printDelimeter();
         cout << "PhoneBook is empty" << endl;
     }
     else {
-        cout << "All persons in PhoneBook" << endl;
-        cout << "-------------------------" << endl;
+        cout << endl << "All persons in PhoneBook" << endl;
+        printDelimeter();
         book->toString();
-        cout << "-------------------------" << endl;
     }
 
 }
@@ -105,10 +107,13 @@ void App::saveAtEnd() const
 void App::find() const {
     string input = getInput("Find person by ID\nID: ");
     try {
-        book->find(input)->toString();
+        cout << book->find(input)->toString() << endl;
     }
     catch (invalid_argument e) {
+        printDelimeter();
         cout << e.what() << endl;
+        printDelimeter();
+
     }
 }
 
@@ -126,22 +131,29 @@ void App::add() {
     int year = getNumberInput("Address - year: ");
     try {
         book->add(new Person(name, phone, day, month, year, street, house, city, zip));
+        printDelimeter();
         cout << "Person added" << endl;
     }
     catch (range_error e) {
+        printDelimeter();
         cout << e.what() << endl;
         cout << "Person addition failed" << endl;
+        printDelimeter();
     }
 }
 
 void App::deletePerson() {
     string input = getInput("Delete Person by ID\nID:");
     try {
-        book->remove(input);
-        cout << "Person deleted" << endl;
+        Person* p = book->remove(input);
+        cout << "Deleting person: " << p->toString() << endl;
+        delete p;
+        cout << "Deletion complete " << endl;
     }
     catch (invalid_argument e) {
+        printDelimeter();
         cout << e.what() << endl;
+        printDelimeter();
     }
     
 }
@@ -156,45 +168,45 @@ void App::editPerson() {
         try {
             input = getInput("Edit Person\nFind person by ID:");
             p = book->find(input);
-            cout << "Person found" << endl << p->toString()  << endl << "Let input empty to keep original value" << endl << endl;
-            cout << "Original name: " + p->GetName() << endl;
+            cout << endl << "Person found" << p->toString()  << endl << "Let input empty to keep original value" << endl << endl;
+            cout << endl << "Original name: " + p->GetName() << endl;
             name = getEditInput("Enter new name: ");
             name = name == "" ? p->GetName() : name;
             p->SetName(name);
 
-            cout << "Original phone: " + p->GetPhone() << endl;
+            cout << endl << "Original phone: " + p->GetPhone() << endl;
             phone = getEditInput("New Phone: ");
             phone = phone == "" ? p->GetPhone() : phone;
             p->SetPhone(phone);
 
-            cout << "Original street: " + p->GetAddress()->GetStreet() << endl;
+            cout << endl << "Original street: " + p->GetAddress()->GetStreet() << endl;
             street = getEditInput("New Address - street: ");
             street = street == "" ? p->GetAddress()->GetStreet() : street;
             p->SetAddressStreet(street);
 
-            cout << "Original House number: " + to_string(p->GetAddress()->getHouseNum()) << endl;
+            cout << endl << "Original House number: " + to_string(p->GetAddress()->getHouseNum()) << endl;
             house = getEditNumberInput("New Address - house number: ");
             house = house == NULL ? p->GetAddress()->getHouseNum() : house;
             p->SetAddressHouse(house);
 
-            cout << "Original city: " + p->GetAddress()->GetCity() << endl;
+            cout << endl << "Original city: " + p->GetAddress()->GetCity() << endl;
             city = getEditInput("New Address - city: ");
             city = city == "" ? p->GetAddress()->GetCity() : city;
             p->SetAddressCity(city);
 
-            cout << "Original ZIP code: " + p->GetAddress()->GetZip() << endl;
+            cout << endl << "Original ZIP code: " + p->GetAddress()->GetZip() << endl;
             zip = getEditInput("New Address - ZIP: ");
             zip = zip == "" ? p->GetAddress()->GetZip() : zip;
             p->SetAddressZip(zip);
 
-            cout << "Original Birthday - day: " + to_string(p->GetBirthday()->GetDay()) << endl;
             while (true) {
+                cout << endl << "Original Birthday - day: " + to_string(p->GetBirthday()->GetDay()) << endl;
                 day = getEditNumberInput("New Birthday - day: ");
                 day = day == NULL ? p->GetBirthday()->GetDay() : day;
-                cout << "Original Birthday - month: " + to_string(p->GetBirthday()->GetMonth()) << endl;
+                cout << endl << "Original Birthday - month: " + to_string(p->GetBirthday()->GetMonth()) << endl;
                 month = getEditNumberInput("New Birthday - month: ");
                 month = month == NULL ? p->GetBirthday()->GetMonth() : month;
-                cout << "Original Birthday - year: " + to_string(p->GetBirthday()->GetYear()) << endl;
+                cout << endl << "Original Birthday - year: " + to_string(p->GetBirthday()->GetYear()) << endl;
                 year = getEditNumberInput("New Birthday - year: ");
                 year = year == NULL ? p->GetBirthday()->GetYear() : year;
                 try {
@@ -207,10 +219,12 @@ void App::editPerson() {
                     cout << e.what() << endl << "Try again" << endl;
                 }
             }
+            printDelimeter();
             cout << "Person edited" << endl;
             break;
         }
         catch (invalid_argument e) {
+            printDelimeter();
             cout << e.what() << endl;
             input = getInput("Do you want to try again ? (Write y for Yes) :");
             if (input != "y") {
@@ -224,7 +238,14 @@ void App::editPerson() {
 void App::save() const {
     string input = getInput("Export data to the file\nEnter file name: ");
     book->save(input);
+    printDelimeter();
     cout << endl << "PhoneBook saved in " << input << ".json" << endl;;
+
+}
+
+void App::printDelimeter() const
+{
+    cout << endl << "-----------------------------" << endl;
 }
 
 void App::run()
@@ -235,6 +256,7 @@ void App::run()
     while (stillContinue) {
         writeMenu();
         input = getNumberInput("Your choice: ");
+        printDelimeter();
             switch (input)
             {
             case 1:

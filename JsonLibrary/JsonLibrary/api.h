@@ -28,7 +28,7 @@ public:
 
 	// - vrací velikost (poèet prvkù) v poli
 	int getSize() const;
-	void remove(int index);
+	T remove(int index);
 private:
 	int size;
 	int length = 10;
@@ -75,11 +75,12 @@ inline int DynamicArray<T>::getSize() const
 }
 
 template<typename T>
-inline void DynamicArray<T>::remove(int index)
+inline T DynamicArray<T>::remove(int index)
 {
 	if (index < 0 || index >= size) {
 		throw std::invalid_argument("Invalid index");
 	}
+	T deleted = dynamicArray[index];
 	T* newArray = new T[length];
 	for (size_t i = 0; i < size; i++)
 	{	
@@ -92,13 +93,14 @@ inline void DynamicArray<T>::remove(int index)
 			delete[] dynamicArray; 
 			dynamicArray = newArray;;
 			size--;
-			return;
+			return deleted;
 		}
 		else {
 			newArray[i] = dynamicArray[i];
 		}
 
 	}
+	return deleted;
 }
 
 template<typename T>

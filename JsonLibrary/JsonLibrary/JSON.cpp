@@ -155,10 +155,9 @@ void JSON::skipQuotes(const std::string& string, int& pointer) {
 }
 
 void JSON::skipComma(const std::string& string, int& pointer) {
-	if (string.at(pointer) != ',') {
-		throw std::invalid_argument("Missing comma");
+	if (string.at(pointer) == ',') {
+		pointer++;
 	}
-	pointer++;
 }
 
 void JSON::skipColon(const std::string& string, int& pointer) {

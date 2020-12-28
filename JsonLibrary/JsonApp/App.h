@@ -20,6 +20,7 @@ private:
 	void deletePerson();
 	void editPerson();
 	void save() const;
+	void printDelimeter() const;
 public:
 	App();
 	~App();
