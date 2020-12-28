@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JsonLibrary", "JsonLibrary\JsonLibrary.vcxproj", "{F631813A-2491-4F6D-9553-B3ABF06C4031}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JsonApp", "JsonApp\JsonApp.vcxproj", "{7DC522A3-65B3-4834-8C56-42BB75C3E33C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F631813A-2491-4F6D-9553-B3ABF06C4031} = {F631813A-2491-4F6D-9553-B3ABF06C4031}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,16 +24,16 @@ Global
 		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Debug|x86.Build.0 = Debug|Win32
 		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Release|x64.ActiveCfg = Release|x64
 		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Release|x64.Build.0 = Release|x64
-		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Release|x86.ActiveCfg = Release|Win32
-		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Release|x86.Build.0 = Release|Win32
+		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Release|x86.ActiveCfg = Debug|Win32
+		{F631813A-2491-4F6D-9553-B3ABF06C4031}.Release|x86.Build.0 = Debug|Win32
 		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Debug|x64.ActiveCfg = Debug|x64
 		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Debug|x64.Build.0 = Debug|x64
 		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Debug|x86.ActiveCfg = Debug|Win32
 		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Debug|x86.Build.0 = Debug|Win32
 		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Release|x64.ActiveCfg = Release|x64
 		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Release|x64.Build.0 = Release|x64
-		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Release|x86.ActiveCfg = Release|Win32
-		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Release|x86.Build.0 = Release|Win32
+		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Release|x86.ActiveCfg = Debug|Win32
+		{7DC522A3-65B3-4834-8C56-42BB75C3E33C}.Release|x86.Build.0 = Debug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
