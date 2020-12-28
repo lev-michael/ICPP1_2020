@@ -9,7 +9,7 @@ string Person::generateId() const
 {
 	string id;
 	int random;
-	srand(time(0));
+	srand(time(NULL));
 	for (size_t i = 0; i < 6; i++)
 	{
 		random = rand() % 10;

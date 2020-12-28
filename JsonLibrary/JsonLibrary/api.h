@@ -82,7 +82,7 @@ inline T DynamicArray<T>::remove(int index)
 	}
 	T deleted = dynamicArray[index];
 	T* newArray = new T[length];
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{	
 		if (index == i) 
 		{
@@ -114,7 +114,7 @@ inline void DynamicArray<T>::increaseArray()
 {
 	length = 2 * length;
 	T* newArray = new T[length];
-	for (size_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		newArray[i] = dynamicArray[i];
 	}

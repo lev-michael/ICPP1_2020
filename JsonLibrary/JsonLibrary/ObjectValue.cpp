@@ -9,7 +9,7 @@ ObjectValue::ObjectValue()
 
 ObjectValue::~ObjectValue()
 {
-	for (size_t i = 0; i < this->object->getSize(); i++)
+	for (int i = 0; i < this->object->getSize(); i++)
 	{
 		delete this->object->getElementAt(i).getValue();
 	}
@@ -25,7 +25,7 @@ std::string ObjectValue::serialize() const
 {
 	int size = object->getSize();
 		std::string output = "{";
-		for (size_t i = 0; i < size; i++)
+		for (int i = 0; i < size; i++)
 		{
 			KeyValuePair pair = object->getElementAt(i);
 
@@ -42,7 +42,7 @@ std::string ObjectValue::serialize() const
 
 Value* ObjectValue::getValue(std::string key)
 {
-	for (size_t i = 0; i < this->object->getSize(); i++)
+	for (int i = 0; i < this->object->getSize(); i++)
 	{
 		if (this->object->getElementAt(i).getKey() == key) {
 			return this->object->getElementAt(i).getValue();

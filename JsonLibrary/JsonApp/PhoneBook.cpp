@@ -11,7 +11,7 @@ using namespace std;
 
 int PhoneBook::findIndex( string id)
 {
-    for (size_t i = 0; i < contacts->getSize(); i++)
+    for (int i = 0; i < contacts->getSize(); i++)
     {
         if (contacts->getElementAt(i)->GetId() == id) {
             return i;
@@ -29,7 +29,7 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-    for (size_t i = 0; i < contacts->getSize(); i++)
+    for (int i = 0; i < contacts->getSize(); i++)
     {
         delete  contacts->getElementAt(i);
     }
@@ -61,7 +61,7 @@ Person* PhoneBook::find(string id)
 
 void PhoneBook::toString() const
 {
-    for (size_t i = 0; i < contacts->getSize(); i++)
+    for (int i = 0; i < contacts->getSize(); i++)
     {
         cout << contacts->getElementAt(i)->toString();
     }
@@ -83,7 +83,7 @@ void PhoneBook::load()
         try {
             Value* val = JSON::deserialize(ss.str());
             ArrayValue* persons = dynamic_cast<ArrayValue*>(val);
-            for (size_t i = 0; i < persons->size; i++)
+            for (int i = 0; i < persons->size; i++)
             {
                 ObjectValue* person = dynamic_cast<ObjectValue*>(persons->array->getElementAt(i));
                 string id = dynamic_cast<StringValue*>(person->getValue("id"))->get();
@@ -118,7 +118,7 @@ void PhoneBook::load()
 
 void PhoneBook::save(string file) const{
     ArrayValue* persons = new ArrayValue();
-    for (size_t i = 0; i < this->contacts->getSize(); i++)
+    for (int i = 0; i < this->contacts->getSize(); i++)
     {
         ObjectValue* person = new ObjectValue();
         ObjectValue* address = new ObjectValue();
